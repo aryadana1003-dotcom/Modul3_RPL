@@ -34,6 +34,14 @@ class BukuView(ctk.CTk):
         self.btn_simpan = ctk.CTkButton(self.frame_kiri, text="Simpan Data", fg_color="green")
         self.btn_simpan.pack(pady=10, padx=15, fill="x")
 
+        # Tombol Update
+        self.btn_update = ctk.CTkButton(self.frame_kiri, text="Update Data", fg_color="blue")
+        self.btn_update.pack(pady=10, padx=15, fill="x")
+
+        # Tombol Hapus
+        self.btn_hapus = ctk.CTkButton(self.frame_kiri, text="Hapus Data", fg_color="red")
+        self.btn_hapus.pack(pady=10, padx=15, fill="x")
+
 
         # FRAME KANAN: TABEL DATA BUKU
         self.frame_kanan = ctk.CTkFrame(self)
