@@ -11,4 +11,4 @@ print("Data berhasil disimpan ke Laragon MySQL!")
 model2 = print("\n=== Daftar Buku ===")
 daftar_buku = model.get_all_buku()
 for buku in daftar_buku:
-    print(f"[{buku['id_buku']}] {buku['Judul']} - {buku['penulis']}, ({buku['tahun_terbit']})")
+    print(f"[{buku['id_buku']}] {buku['judul']} - {buku['penulis']}, ({buku['tahun_terbit']})")
