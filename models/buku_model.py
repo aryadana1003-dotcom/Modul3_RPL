@@ -28,63 +28,30 @@ class BukuModel:
             return True
         return False
 
-    def update_buku(self, id_buku, judul, penulis, tahun_terbit):
-    # Memperbarui data buku berdasarkan ID.
-        if not self.conn:
-            return False
-
-        cursor = None
-
-        try:
-            cursor = self.conn.cursor()
-
-            query = (
-                f"UPDATE {self.table_name} "
-                "SET judul = %s, penulis = %s, tahun_terbit = %s "
-                "WHERE id_buku = %s"
-            )
-
-            values = (judul, penulis, tahun_terbit, id_buku)
-            cursor.execute(query, values)
-            self.conn.commit()
-
-            return cursor.rowcount > 0
-
-        except Exception as error:
-            self.conn.rollback()
-            print(f"Gagal memperbarui data buku: {error}")
-            return False
-
-        finally:
-            if cursor is not None:
+    def update_buku(self, id_buku, judul, penulis, tahun):
+        if self.conn:
+            try:
+                cursor = self.conn.cursor()
+                query = "UPDATE " + self.table_name + " SET judul = %s, penulis = %s, tahun_terbit = %s WHERE id_buku = %s"
+                cursor.execute(query, (judul, penulis, tahun, id_buku))
+                self.conn.commit()
                 cursor.close()
-
+                return True
+            except Exception as e:
+                print(f"Error update: {e}")
+                return False
+        return False
 
     def delete_buku(self, id_buku):
-        # Menghapus data buku berdasarkan ID.
-        if not self.conn:
-            return False
-
-        cursor = None
-
-        try:
-            cursor = self.conn.cursor()
-
-            query = (
-                f"DELETE FROM {self.table_name} "
-                "WHERE id_buku = %s"
-            )
-
-            cursor.execute(query, (id_buku,))
-            self.conn.commit()
-
-            return cursor.rowcount > 0
-
-        except Exception as error:
-            self.conn.rollback()
-            print(f"Gagal menghapus data buku: {error}")
-            return False
-
-        finally:
-            if cursor is not None:
+        if self.conn:
+            try:
+                cursor = self.conn.cursor()
+                query = "DELETE FROM " + self.table_name + " WHERE id_buku = %s"
+                cursor.execute(query, (id_buku,))
+                self.conn.commit()
                 cursor.close()
+                return True
+            except Exception as e:
+                print(f"Error delete: {e}")
+                return False
+        return False
