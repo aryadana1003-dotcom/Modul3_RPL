@@ -35,12 +35,12 @@ class BukuView(ctk.CTk):
         self.btn_simpan.pack(pady=10, padx=15, fill="x")
 
         # Tombol Update
-        self.btn_update = ctk.CTkButton(self.frame_kiri, text="Update Data", fg_color="blue")
-        self.btn_update.pack(pady=10, padx=15, fill="x")
+        # self.btn_update = ctk.CTkButton(self.frame_kiri, text="Update Data", fg_color="blue")
+        # self.btn_update.pack(pady=10, padx=15, fill="x")
 
         # Tombol Hapus
-        self.btn_hapus = ctk.CTkButton(self.frame_kiri, text="Hapus Data", fg_color="red")
-        self.btn_hapus.pack(pady=10, padx=15, fill="x")
+        # self.btn_hapus = ctk.CTkButton(self.frame_kiri, text="Hapus Data", fg_color="red")
+        # self.btn_hapus.pack(pady=10, padx=15, fill="x")
 
 
         # FRAME KANAN: TABEL DATA BUKU
@@ -51,21 +51,21 @@ class BukuView(ctk.CTk):
 
         # Komponen Tabel (Treeview dari tkinter standar)
         kolom = ("id", "judul", "penulis", "tahun")
-        self.table = ttk.Treeview(self.frame_kanan, columns=kolom, show="headings", height=15)
+        self.tabel = ttk.Treeview(self.frame_kanan, columns=kolom, show="headings", height=15)
 
         # Konfigurasi Header Tabel
-        self.table.heading("id", text="ID")
-        self.table.heading("judul", text="Judul Buku")
-        self.table.heading("penulis", text="Penulis")
-        self.table.heading("tahun", text="Tahun Terbit")
+        self.tabel.heading("id", text="ID")
+        self.tabel.heading("judul", text="Judul Buku")
+        self.tabel.heading("penulis", text="Penulis")
+        self.tabel.heading("tahun", text="Tahun Terbit")
 
         # Konfigurasi Lebar Kolom
-        self.table.column("id", width=40, anchor="center")
-        self.table.column("judul", width=150)
-        self.table.column("penulis", width=120)
-        self.table.column("tahun", width=80, anchor="center")
+        self.tabel.column("id", width=40, anchor="center")
+        self.tabel.column("judul", width=150)
+        self.tabel.column("penulis", width=120)
+        self.tabel.column("tahun", width=80, anchor="center")
 
-        self.table.pack(fill="both", expand=True, padx=15, pady=10)
+        self.tabel.pack(fill="both", expand=True, padx=15, pady=10)
 
 
 # Blok eksekusi grafis
